@@ -39,11 +39,8 @@ public class CustomerDAOTest {
 	@Test
 	public void testUpdateCustomer() throws Exception {
 		CustomerVO vo = new CustomerVO();
-		vo.setUserid("C002");
+		vo.setUserid("C001");
 		vo.setName("길수");
-		vo.setBirthyear(1994);
-		vo.setAddress("대전광역시 서구 청사로 281 204동");
-		vo.setGrade("GOLD");
 		dao.updateCustomer(vo);
 	}
 	

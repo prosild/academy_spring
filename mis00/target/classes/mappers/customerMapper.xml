@@ -16,12 +16,23 @@
 	
 	<update id="updateCustomer">
 		UPDATE customer c
-		   SET c.name = #{name}
+		<set>
+		       c.moddate = sysdate
+			 , c.name = #{name}
+			<if test="birthyear != 0">
 		     , c.birthyear = #{birthyear}
+			</if>
+			<if test="address != null">
 		     , c.address = #{address}
+		    </if>
+		    <if test="phone != null">
 		     , c.phone = #{phone}
+		    </if>
+		    <if test="grade != null">
 		     , c.grade = #{grade}
-		     , c.moddate = sysdate
+		    </if>
+		</set>
+		<trim prefix="SET" prefixOverrides="," />
 		 WHERE c.userid = #{userid}
 	</update>
 	
@@ -29,4 +40,5 @@
 		DELETE FROM customer c
 		 WHERE c.userid = #{userid}
 	</delete>
+	
 </mapper>
